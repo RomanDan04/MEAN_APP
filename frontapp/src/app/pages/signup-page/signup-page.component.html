@@ -1,0 +1,9 @@
+<h1 class="mb-3">Registration form</h1>
+<form [formGroup]="regForm" (submit)="newUser()">
+    <input type="text" placeholder="Insert name" autocomplete="off" class="form-control my-3" formControlName="name">
+    <input type="text" placeholder="Insert login" autocomplete="off" class="form-control my-3" formControlName="login">
+    <input type="email" placeholder="Insert email" autocomplete="off" class="form-control my-3" formControlName="email">
+    <input type="password" placeholder="Insert password" autocomplete="off" class="form-control my-3" formControlName="password">
+    <button class="btn btn-success" type="submit">Register</button>
+</form>
+<!-- {{ regForm.value | json }} -->
