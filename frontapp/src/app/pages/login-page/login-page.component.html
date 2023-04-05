@@ -1,4 +1,7 @@
-<h1>Login Form</h1>
-<form>
-    <input type="text" name="name">
+<h1 class="mb-3">Authorization form</h1>
+<form [formGroup]="regForm" (submit)="userLogin()">
+    <input type="text" placeholder="Insert login" autocomplete="off" class="form-control my-3" formControlName="login">
+    <input type="password" placeholder="Insert password" autocomplete="off" class="form-control my-3" formControlName="password">
+    <app-alert>{{ formError }}</app-alert>
+    <button class="btn btn-success" type="submit">Log In</button>
 </form>

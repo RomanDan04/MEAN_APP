@@ -4,12 +4,13 @@ import { HomePageComponent } from '../pages/home-page/home-page.component';
 import { SignupPageComponent } from '../pages/signup-page/signup-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 const routes: Routes = [
   {path: "", pathMatch: 'full', component: HomePageComponent},
-  {path: "account/dashboard", component: DashboardComponent},
-  {path: "account/reg", component: SignupPageComponent},
-  {path: "account/auth", component: LoginPageComponent},
+  {path: "login", component: LoginPageComponent},
+  {path: "signup", component: SignupPageComponent},
+  {path: "dashboard", component: DashboardComponent, canActivate: [AuthGuardService]},
   {path: "**", redirectTo: ""}
 ];
 

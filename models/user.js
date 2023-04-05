@@ -8,10 +8,12 @@ const userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     login: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -27,7 +29,11 @@ export const getUserById = (id, callback) => {
 
 export const getUserByLogin = (login, callback) => {
     const query = { login: login }
-    userModel.findOne(query, callback)
+    userModel.findOne(query).then((user)=> {
+        callback(user)
+    }).catch(err => {
+        callback(null, err)
+    })
 }
 
 export const addUser = (newUser, callback) => {
@@ -35,7 +41,8 @@ export const addUser = (newUser, callback) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
             if(err) throw err
             newUser.password = hash
-            newUser.save(callback)
+            newUser.save().then(()=>{ callback() })
+            .catch((err) => callback(err))
         })
     })
 }

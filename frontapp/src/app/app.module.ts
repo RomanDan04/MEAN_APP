@@ -10,6 +10,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { FormValidationService } from './services/form-validation.service';
+import { AuthentificationService } from './services/authentification.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -20,13 +25,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     LoginPageComponent,
     SignupPageComponent,
     DashboardComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    FormValidationService,
+    AuthentificationService,
+    AuthGuardService,
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

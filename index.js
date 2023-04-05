@@ -23,7 +23,7 @@ mongoose.connection.on("connected", ()=>{
 })
 
 mongoose.connection.on("error", (err)=>{
-    console.log("Connection not was started: " + err + "!")
+    console.log("Connection was not started: " + err + "!")
 })
 
 
